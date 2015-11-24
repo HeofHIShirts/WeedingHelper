@@ -3,7 +3,6 @@ A Ruby script that parses a CSV file of possible weeding/deaccession candidates 
 
 ## Information: 
 
-<<<<<<< HEAD
 * Script last updated 24 November 2015
 
 * Script developed on Ruby 2.2.3, but successfully tested on Ruby 1.9.1. Just in case you wanted to know.
@@ -27,7 +26,6 @@ If you want to work on making these assumptions explicit asks, go for it!
 
 ### Why build this thing?
 
-<<<<<<< HEAD
 First, because there wasn't anything on GitHub that looked like this. So why not?
 
 Second, and more impoprtantly, I built this script because not everyone has access to the database of their systems, not everyone knows SQL so that they can pull useful information out of their databases, not everyone has a system that will help with weeding decisions, and not everyone has an IT department at their library (or library system) that will build them custom or customizable reports based on the data they have, so that they can make informed weeding decisions. 
@@ -39,5 +37,3 @@ And because I don't necessarily see the need to pay other services large amounts
 That said, this script is not a substitute for actually touching the materials in your collection. It can't detect broken or worn objects, nor can it show you that something is the only copy in your collection and might be worth holding on to. You still have to exercise judgment and responsibility. I just hope this helps.
 
 -HeofHIShirts
-
-
