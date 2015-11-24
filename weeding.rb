@@ -1,9 +1,9 @@
-﻿# This script makes a few assumptions, based on the CSV methods in the standard library:
-# a.) Your file has headers, and they are the very first row of your data.
-# b.) Your file is actually comma-separated, and not semicolon-separated or tab-separated. Maybe in a later release we can add those.
-# c.) You know at least part of the name(s) of the collections or call numbers that you want to weed with, and those collection names are in your file somewhere.
-# d.) When date weeding, you want to keep things before the date you input as your comparison date. 
-# e.) If selecting multiple columns or headers for data, the data in all of those columns is in the same format.
+# This script makes a few assumptions, based on the CSV methods in the standard library of Ruby:
+
+# 1. Your file has headers, and they are the very first row of your data. Column names are derived from your headers, so if you need to make them more descriptive, do that.
+# 2. You know at least part of the name(s) of the collections or call numbers that you want to weed with, and those collection names are in your file somewhere, because there's some regex matching going on.
+# 3. When weeding by date, you want to weed things older than the date you input as your comparison date. 
+# 4. If selecting multiple columns or headers for data, the data in all of those columns is in the same format, so that we can compare apples to apples.
 
 # If you want to work on making these assumptions explicit asks, go for it!
 
@@ -19,11 +19,19 @@ class WeedingHelper
 			print "> "
 		
 			file_path = gets.chomp
+
+		# And now, we ask what the column separator is, just in case someone gets a file with semicolons or tabs instead.
+
+			puts "What separates each cell of data in your file? (e.g. , ; ) Use a \\t for a tab."
+			print "> "
+
+			separator_symbol = gets.chomp
 		
 			# We're going to slurp it all in and then convert it to an array of arrays, with the header data as the first item in the array itself. Then, the headers themselves are getting shuttled off to a new variable so that they can be used in a few different methods later on. We're also creating a new array to hold all of the possible weeds.
-		
-			@file_data = CSV.read(file_path, headers: :true).to_a.compact
+			print "Reading your file..." 
+			@file_data = CSV.read(file_path, headers: true, col_sep: separator_symbol).to_a.compact
 			@headers = @file_data[0]
+			print "done! \n"
 		rescue
 			puts "Your path didn't work, or that file doesn't exist!"
 			retry
